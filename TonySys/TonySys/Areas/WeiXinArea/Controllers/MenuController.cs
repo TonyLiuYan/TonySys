@@ -12,27 +12,39 @@ namespace TonySys.Areas.WeiXinArea.Controllers
         // GET: WeiXinArea/Menu
         public ActionResult Create()
         {
-            WeChatParam weChatParam=new WeChatParam();
 
-            MenuResult menuResult=new MenuResult();
-           
-            List<Item> items=new List<Item>();
-
-            Item item1 = new Item
+            //一级按钮菜单
+            List<Item> items = new List<Item>(){
+                new Item
             {
                 Name = "一级菜单1",
                 Key = "1-1",
                 Type = Dos.WeChat.Item.Click
-            };
+            },
+                new Item()
+            {
+                Name = "一级菜单2",
+                Key = "1-2",
+                Type = Dos.WeChat.Item.View,
+                Url = "http://www.liuyanzhuyuhan.com/Home/Index"
+            }, 
+                new Item()
+            {
+                Name = "一级菜单3",
+                Key = "1-3",
+                Type = Dos.WeChat.Item.View,
+                Url = "http://www.baidu.com"
+            }};
 
-            items.Add(item1);
 
-            menuResult.Button = items;
+            MenuHelper.Save(new WeChatParam
+            {
+                Menu = new MenuResult
+                {
+                    Button = items
+                }
+            });
 
-            weChatParam.Menu = menuResult;
-
-            Dos.WeChat.MenuHelper.Save(weChatParam);
-          
             return View();
         }
 

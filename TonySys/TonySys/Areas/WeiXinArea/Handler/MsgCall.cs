@@ -11,7 +11,7 @@ namespace TonySys.Areas.WeiXinArea.Handler
     {
         public void AfterMsgCall(ReceiveMsg msg, ResponseMsg repMsg)
         {
-            throw new NotImplementedException();
+            
         }
 
         public ResponseMsg EventMsgCall(RecEventMsg msg)
@@ -43,13 +43,17 @@ namespace TonySys.Areas.WeiXinArea.Handler
             //回复文本消息
             var r = msg.GetTextResponse();
             r.Data = (TextMsgData)(string.Format("已收到您的消息！您的OpenId：{0}。您发送的内容为：{1}。",msg.FromUserName, msg.Content));
-            LogHelper.Debug(r.Data.ToString());
+
+            LogHelper.Debug(r.ToString());
             return r;
         }
 
         public ResponseMsg VoiceMsgCall(RecVoiceMsg msg)
         {
-            throw new NotImplementedException();
+            var r = msg.GetTextResponse();
+
+            r.Data = (TextMsgData)("收到您的语音了");
+            return r;
         }
     }
 }

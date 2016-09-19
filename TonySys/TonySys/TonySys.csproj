@@ -146,7 +146,6 @@
     <Content Include="LICENSE" />
     <Content Include="Areas\WeiXinArea\Views\_ViewStart.cshtml" />
     <Content Include="Areas\WeiXinArea\Views\Shared\_Layout.cshtml" />
-    <Content Include="Areas\WeiXinArea\Views\WeChat\WeChatService.cshtml" />
     <Content Include="Areas\WeiXinArea\Views\Menu\Create.cshtml" />
     <Content Include="Areas\WeiXinArea\Views\Menu\Delete.cshtml" />
     <Content Include="Areas\WeiXinArea\Views\Menu\Get.cshtml" />
@@ -183,6 +182,7 @@
     <Folder Include="App_Data\" />
     <Folder Include="Areas\WeiXinArea\Models\" />
     <Folder Include="Areas\WeiXinArea\Views\Home\" />
+    <Folder Include="Areas\WeiXinArea\Views\WeChat\" />
     <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
