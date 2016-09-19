@@ -16,7 +16,28 @@ namespace TonySys.Areas.WeiXinArea.Handler
 
         public ResponseMsg EventMsgCall(RecEventMsg msg)
         {
-            throw new NotImplementedException();
+            var r = msg.GetTextResponse();
+            switch (msg.Event.ToLower())
+            {
+                //关注公众号事件
+                case RecEventMsg.Subscribe:
+                    r.Data = (TextMsgData)("欢迎关注本公众号！");
+                    
+                    break;
+                //菜单点击事件
+                case RecEventMsg.Click:
+                    if (msg.EventKey == "1-1")
+                    {
+                        r.Data = (TextMsgData)("您点击了测试菜单按钮！");
+                    }
+                    break;
+                //二维码扫描事件
+                case RecEventMsg.Scan:
+                    r.Data = (TextMsgData)("您扫描了二维码！场景值：" + msg.EventKey);
+                    break;
+            }
+            return r;
+
         }
 
         public ResponseMsg ImageMsgCall(RecImgMsg msg)
